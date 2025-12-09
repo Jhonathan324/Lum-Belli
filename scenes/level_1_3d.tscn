@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8nx3agol67mk"]
+
+[ext_resource type="Script" uid="uid://cvjqx0pvmsibs" path="res://script/Player3D.gd" id="1_dlw35"]
+[ext_resource type="PackedScene" uid="uid://bi7hr86l3wmbs" path="res://scenes/HUD3D.tscn" id="2_6ch3f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riffh"]
+albedo_color = Color(0.20392157, 0.59607846, 0.85882354, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dlw35"]
+material = SubResource("StandardMaterial3D_riffh")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6ch3f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlw35"]
+albedo_color = Color(0.15294118, 0.68235296, 0.3764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ch3f"]
+material = SubResource("StandardMaterial3D_dlw35")
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1iovf"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="Environment" id="Environment_dlw35"]
+background_mode = 1
+background_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ch3f"]
+albedo_color = Color(0.90588236, 0.29803923, 0.23529412, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1iovf"]
+material = SubResource("StandardMaterial3D_6ch3f")
+top_radius = 1.0
+bottom_radius = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mwb4s"]
+radius = 1.0
+
+[node name="Level1_3D" type="Node3D"]
+
+[node name="Player3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+script = ExtResource("1_dlw35")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player3D"]
+mesh = SubResource("CapsuleMesh_dlw35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D"]
+shape = SubResource("CapsuleShape3D_6ch3f")
+
+[node name="Camera3D" type="Camera3D" parent="Player3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 0, 1, 3)
+current = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_6ch3f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_1iovf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70710677, 0.49999997, -0.49999997, 0, 0.70710677, 0.70710677, 0.70710677, -0.49999997, 0.49999997, 10, 0, 5)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dlw35")
+
+[node name="Obstacle1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle1"]
+mesh = SubResource("CylinderMesh_1iovf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle1"]
+shape = SubResource("CylinderShape3D_mwb4s")
+
+[node name="Obstacle2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5426197, 1, 5.5816426)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle2"]
+mesh = SubResource("CylinderMesh_1iovf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle2"]
+shape = SubResource("CylinderShape3D_mwb4s")
+
+[node name="Obstacle3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.474633, 1, -4.5464067)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle3"]
+mesh = SubResource("CylinderMesh_1iovf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle3"]
+shape = SubResource("CylinderShape3D_mwb4s")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="HUD3D" parent="UILayer" instance=ExtResource("2_6ch3f")]

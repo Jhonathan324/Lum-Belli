@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bge5rpcqwk4k5"]
+
+[ext_resource type="Script" uid="uid://dmargvx1oi75y" path="res://script/settings_menu.gd" id="1_yelko"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yelko")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05882353, 0.20392157, 0.3764706, 0.78431374)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -43.0
+offset_right = 73.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="FullscreenCheck" type="CheckBox" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tela Cheia"
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+value = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "VOLTAR"
+
+[node name="ApplyButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "APLICAR"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -260.0
+offset_right = 67.0
+offset_bottom = -237.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONFIGURAÇÕES"

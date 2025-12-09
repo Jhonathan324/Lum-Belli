@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://blaamnuoi2y58"]
+
+[ext_resource type="Theme" uid="uid://d23aqf17pirfv" path="res://ui/theme.tres" id="1_yqorp"]
+[ext_resource type="Script" uid="uid://oyo638janpsd" path="res://script/main_menu.gd" id="2_0ykhv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqorp"]
+bg_color = Color(0.08627451, 0.12941177, 0.24313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.05882353, 0.20392157, 0.3764706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ykhv"]
+bg_color = Color(0.101960786, 0.13725491, 0.49411765, 1)
+border_color = Color(0.15686275, 0.20784314, 0.5764706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqorp")
+script = ExtResource("2_0ykhv")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.18039216, 1)
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 49.0
+offset_right = 738.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+text = "Lum Belli"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/ButtonContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqorp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ykhv")
+text = "INICIAR JOGO"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/ButtonContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqorp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ykhv")
+text = "CONFIGURAÇÕES"
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/ButtonContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqorp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ykhv")
+text = "CRÉDITOS"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/ButtonContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yqorp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ykhv")
+text = "SAIR"
+
+[connection signal="pressed" from="CenterContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
