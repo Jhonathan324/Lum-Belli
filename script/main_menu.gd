@@ -4,8 +4,8 @@ func _ready():
 	print("Menu principal carregado!")
 
 func _on_start_button_pressed():
-	print("Iniciar jogo!")
-	get_tree().change_scene_to_file("res://scenes/Level1.tscn")
+	var level_scene = load("res://scenes/levels/Level1_3D.tscn")
+	get_tree().change_scene_to_packed(level_scene)
 
 func _on_settings_button_pressed():
 	var settings_scene = load("res://scenes/SettingsMenu.tscn")
