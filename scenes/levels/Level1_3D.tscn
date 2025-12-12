@@ -95,6 +95,15 @@ mesh = SubResource("CylinderMesh_1iovf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle3"]
 shape = SubResource("CylinderShape3D_mwb4s")
 
+[node name="Obstacle4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5433335, 3.5228093, 0.82691336)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle4"]
+mesh = SubResource("CylinderMesh_1iovf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle4"]
+shape = SubResource("CylinderShape3D_mwb4s")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="HUD3D" parent="UILayer" instance=ExtResource("2_3rcmi")]
